@@ -11,8 +11,8 @@
       <th>Email 2</th>
       <th>Skills</th>
       <th>Notes</th>
-      <th>User</th>
       <th>Edit</th>
+      <th>Profile</th>
     </tr>
   </thead>
 
@@ -27,8 +27,19 @@
         <td><%= person.email_2 %></td>
         <td><%= person.skills %></td>
         <td><%= person.notes %></td>
-        <td><%= person.user&.name %></td>
         <td><%= edit_button(person) %></td>
+        <td>
+          <%= link_to(person_path(person.user),
+                      title: "View User Profile",
+                      class: 'button edit-button') do
+            "<span class='fa fa-user-circle'></span><span style='padding-left: 0.25em'> Profile</span>".html_safe
+          end if person.user_id %>
+          <%= link_to(edit_user_path(person.user),
+                      title: "Edit User Account",
+                      class: 'button edit-button') do
+            "<span class='fa fa-user-edit'></span><span style='padding-left: 0.25em'> Account</span>".html_safe
+          end if person.user_id %>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -1,52 +1,105 @@
 <%= render "layouts/view_header", resource: @person %>
 
 <div class="section-detail">
-  <p id="notice"><%= notice %></p>
+  <br><br>
 
-  <p>
+  <div>
     <strong>First name:</strong>
     <%= @person.first_name %>
-  </p>
+  </div>
 
-  <p>
+  <div>
     <strong>Last name:</strong>
     <%= @person.last_name %>
-  </p>
+  </div>
 
-  <p>
+  <div>
     <strong>Phone:</strong>
     <%= @person.phone %>
-  </p>
+  </div>
 
-  <p>
+  <div>
     <strong>Email:</strong>
     <%= @person.email %>
-  </p>
+  </div>
 
-  <p>
+  <div>
     <strong>Phone 2:</strong>
     <%= @person.phone_2 %>
-  </p>
+  </div>
 
-  <p>
+  <div>
     <strong>Email 2:</strong>
     <%= @person.email_2 %>
-  </p>
+  </div>
 
-  <p>
+  <div>
     <strong>Skills:</strong>
     <%= @person.skills %>
-  </p>
+  </div>
 
-  <p>
+  <div>
     <strong>Notes:</strong>
     <%= @person.notes %>
-  </p>
+  </div>
 
-  <p>
+  <div>
     <strong>User:</strong>
-    <%= @person.user_id %>
-  </p>
+    <%= link_to(edit_user_path(@person.user),
+                title: "Edit User Account",
+                class: 'button edit-button') do
+      "<span class='fa fa-user-edit'></span><span style='padding-left: 0.25em'> Account</span>".html_safe
+    end if @person.user_id %>
+  </div>
+
+  <br>
+
+  <div class="tags">
+    <hr>
+    <br><br>
+    <h3>Categories:</h3>
+    <br>
+    <ul type="1">
+      <span class="tag">Transportation</span>
+      <span class="tag">Transportation</span>
+      <span class="tag">Transportation</span>
+    </ul>
+    <hr>
+  </div>
+
+  <div class="content">
+    <hr>
+    <h3>Listings:</h3>
+    <ul type="1">
+      <% @person.listings.each do |listing| %>
+        <li><%= listing.name %></li>
+      <% end %>
+    </ul>
+    <hr>
+  </div>
+
+  <div class="content">
+    <hr>
+    <h3>Matches:</h3>
+    <em>3/5 for this month...</em>
+    <ul type="1">
+      <% @person.matches.each do |match| %>
+        <li><%= match.name %></li>
+      <% end %>
+    </ul>
+    <hr>
+  </div>
+
+  <div class="content">
+    <hr>
+    <h3>Communication logs:</h3>
+    <ul type="1">
+      <% @person.communication_logs.each do |match| %>
+        <li><%= match.name %></li>
+      <% end %>
+    </ul>
+    <hr>
+  </div>
 
   <%= link_to 'Edit', edit_person_path(@person) %> |
   <%= link_to 'Back', people_path %>

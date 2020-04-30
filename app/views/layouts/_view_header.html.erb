@@ -25,8 +25,18 @@
       <%= page_title %>
     </div>
 
-    <div class="section-detail">
-      <%= render 'form', singular_table_name => resource %>
-    </div>
+    <% unless view_action_name == "show" %>
+      <div class="section-detail">
+        <%= render 'form', singular_table_name => resource %>
+      </div>
+    <% end %>
   <% end %>
 </div>
+
+<style>
+  .field-label-left {
+    padding-top: 2em;
+    text-align: left !important;
+    margin-right: 1rem !important;
+  }
+</style>

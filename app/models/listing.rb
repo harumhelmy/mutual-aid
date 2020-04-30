@@ -1,6 +1,7 @@
 class Listing < ApplicationRecord
   taggable_array :tags
 
+  belongs_to :person
   belongs_to :location, optional: true
   belongs_to :service_area, optional: true
 
