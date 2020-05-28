@@ -2,7 +2,7 @@
 
 # people
 person = Person.where(preferred_contact_method: "email", email: "personsemail@example.com(opens in new tab)").first_or_create!
-person_2 = Person.where(preferred_contact_method: "phone", phone: "123-123-1234").first_or_create!
+person_2 = Person.where(preferred_contact_method: "phone", phone: "123-123-1234").first_or_create!q
 # asks for person
 Category::DEFAULT_TAGS.sample(4).each do |tag|
   ask = Ask.where(person: person, service_area: ServiceArea.take).create! # TODO - make this idempotent
